@@ -1,7 +1,10 @@
-using EmployeeContactSystem.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using EmployeeContactSystem.Application.Interfaces;
+using EmployeeContactSystem.Application.Interfaces.EmployeeContactSystem.Application.Interfaces;
 using EmployeeContactSystem.Application.Mappings;
+using EmployeeContactSystem.Infrastructure.Data;
+using EmployeeContactSystem.Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 var app = builder.Build();
 
