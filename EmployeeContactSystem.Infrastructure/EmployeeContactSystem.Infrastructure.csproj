@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EmployeeContactSystem.Application\EmployeeContactSystem.Application.csproj" />
     <ProjectReference Include="..\EmployeeContactSystem.Domain\EmployeeContactSystem.Domain.csproj" />
   </ItemGroup>
 
