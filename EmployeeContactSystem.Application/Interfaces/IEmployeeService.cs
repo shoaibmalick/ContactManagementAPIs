@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using EmployeeContactSystem.Application.DTO;
 
+
 namespace EmployeeContactSystem.Application.Interfaces
 {
-    namespace EmployeeContactSystem.Application.Interfaces
-    {
         /// <summary>
         /// Contract for employee-related business operations.
         /// </summary>
@@ -20,5 +19,5 @@ namespace EmployeeContactSystem.Application.Interfaces
             Task<EmployeeDto> UpdateAsync(int id, CreateEmployeeDto dto);
             Task<bool> DeleteAsync(int id);
         }
-    }
 }
+
