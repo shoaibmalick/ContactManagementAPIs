@@ -2,7 +2,6 @@
 using AutoMapper.QueryableExtensions;
 using EmployeeContactSystem.Application.DTO;
 using EmployeeContactSystem.Application.Interfaces;
-using EmployeeContactSystem.Application.Interfaces.EmployeeContactSystem.Application.Interfaces;
 using EmployeeContactSystem.Domain.Entities;
 using EmployeeContactSystem.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +48,7 @@ namespace EmployeeContactSystem.Infrastructure.Services
                 .ProjectTo<EmployeeDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
+
 
         public async Task<EmployeeDto> GetByIdAsync(int id)
         {

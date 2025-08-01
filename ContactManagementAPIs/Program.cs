@@ -1,6 +1,6 @@
 using AutoMapper;
+using Serilog;
 using EmployeeContactSystem.Application.Interfaces;
-using EmployeeContactSystem.Application.Interfaces.EmployeeContactSystem.Application.Interfaces;
 using EmployeeContactSystem.Application.Mappings;
 using EmployeeContactSystem.Infrastructure.Data;
 using EmployeeContactSystem.Infrastructure.Services;
@@ -19,6 +19,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 
