@@ -23,7 +23,7 @@ namespace EmployeeContactSystem.Application.DTO
         public string Email { get; set; } = string.Empty;
 
         [MaxLength(50, ErrorMessage = "Phone number can't exceed 50 characters.")]
-        [RegularExpression(@"^\+?[0-9\s\-()]{7,50}$ ", ErrorMessage = "Invalid phone number format.")] //Avoid limiting to strictly digits
+        [RegularExpression(@"^\+?[0-9\s\-()]{7,50}$", ErrorMessage = "Invalid phone number format.")] //Avoid limiting to strictly digits
         public string Phone { get; set; } = string.Empty;
 
         [MaxLength(255, ErrorMessage = "Job title can't exceed 255 characters.")]
