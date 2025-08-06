@@ -23,10 +23,10 @@ namespace ContactManagementAPIs.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] string? search = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        public async Task<IActionResult> GetAll([FromQuery] string? search = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 10, [FromQuery] bool? status = null, int companyID = 0)
         {
             try { 
-            var result = await _employeeService.GetAllAsync(search, page, pageSize);
+            var result = await _employeeService.GetAllAsync(search, page, pageSize, status, companyID);
             return Ok(result);
             }
             catch (Exception ex)

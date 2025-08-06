@@ -14,7 +14,7 @@ namespace EmployeeContactSystem.Application.Interfaces
         /// </summary>
         public interface IEmployeeService
         {
-            Task<PagedResult<EmployeeDto>> GetAllAsync(string? search = null, int page = 1, int pageSize = 10);
+            Task<PagedResult<EmployeeDto>> GetAllAsync(string? search = null, int page = 1, int pageSize = 10, bool? status = null,int companyID = 0);
             Task<EmployeeDto> GetByIdAsync(int id);
             Task<EmployeeDto> CreateAsync(CreateEmployeeDto dto);
             Task<EmployeeDto> UpdateAsync(int id, UpdateEmployeeDto dto);

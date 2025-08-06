@@ -46,7 +46,7 @@ namespace EmployeeContactSystem.Infrastructure.Services
         //        .ToListAsync();
         //}
 
-        public async Task<PagedResult<EmployeeDto>> GetAllAsync(string? search = null, int page = 1, int pageSize = 10)
+        public async Task<PagedResult<EmployeeDto>> GetAllAsync(string? search = null, int page = 1, int pageSize = 10, bool? status = null, int companyID = 0)
         {
             var query = _context.Employees
                 .Include(e => e.Company)
@@ -59,6 +59,15 @@ namespace EmployeeContactSystem.Infrastructure.Services
                     e.Email.Contains(search) ||
                     e.Phone.Contains(search) ||
                     e.JobTitle.Contains(search));
+            }
+            if (status.HasValue)
+            {
+                query = query.Where(e => e.IsActive == status.Value);
+            }
+
+            if (companyID != 0)
+            {
+                query = query.Where(e => e.CompanyID == companyID);
             }
 
             var totalCount = await query.CountAsync();
