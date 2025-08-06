@@ -1,0 +1,13 @@
+IF NOT EXISTS (
+    SELECT name 
+    FROM sys.databases 
+    WHERE name = N'EmployeeContactDB'
+)
+BEGIN
+    CREATE DATABASE EmployeeContactDB;
+    PRINT 'Database EmployeeContactDB created successfully.';
+END
+ELSE
+BEGIN
+    PRINT 'Database EmployeeContactDB already exists.';
+END

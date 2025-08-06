@@ -1,0 +1,44 @@
+CREATE TABLE [dbo].[Companies](
+    [ID] INT IDENTITY(1,1) NOT NULL,
+    [CompanyName] NVARCHAR(255) NOT NULL,
+    [Domain] NVARCHAR(255) NOT NULL,
+    [Industry] NVARCHAR(255),
+    [Website] NVARCHAR(255),
+    
+    CONSTRAINT [PK_Companies] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [UQ_Companies_Domain] UNIQUE NONCLUSTERED ([Domain] ASC)
+);
+
+
+CREATE TABLE [dbo].[Employees] (
+  [ID] INT IDENTITY(1,1) NOT NULL,
+  [Name] NVARCHAR(255) NOT NULL,
+  [Email] NVARCHAR(255) NOT NULL,
+  [Phone] NVARCHAR(50) NULL,
+  [JobTitle] NVARCHAR(255) NULL,
+  [CompanyID] INT NOT NULL,
+  [IsActive] BIT NOT NULL CONSTRAINT [DF_Employees_IsActive] DEFAULT (1),
+  [CreatedAt] DATETIME2(7) NOT NULL CONSTRAINT [DF_Employees_CreatedAt] DEFAULT (GETDATE()),
+
+  CONSTRAINT [PK_Employees] PRIMARY KEY CLUSTERED ([ID] ASC),
+  CONSTRAINT [FK_Employees_Companies_CompanyID] FOREIGN KEY ([CompanyID])
+    REFERENCES [dbo].[Companies] ([ID])
+    ON DELETE CASCADE
+);
+GO
+
+-- Index for Name
+CREATE NONCLUSTERED INDEX IX_Employees_Name ON dbo.Employees (Name);
+GO
+
+-- Index for Email
+CREATE NONCLUSTERED INDEX IX_Employees_Email ON dbo.Employees (Email);
+GO
+
+-- Index for Phone
+CREATE NONCLUSTERED INDEX IX_Employees_Phone ON dbo.Employees (Phone);
+GO
+
+-- Index for JobTitle
+CREATE NONCLUSTERED INDEX IX_Employees_JobTitle ON dbo.Employees (JobTitle);
+GO

@@ -1,0 +1,63 @@
+INSERT INTO [dbo].[Companies] ([CompanyName], [Domain], [Industry], [Website])
+VALUES (N'Alpha Corp', N'alpha.com', N'Technology', N'https://alpha.com');
+GO
+INSERT INTO [dbo].[Companies] ([CompanyName], [Domain], [Industry], [Website])
+VALUES (N'Beta Ltd', N'beta.org', N'Finance', N'https://beta.org');
+GO
+INSERT INTO [dbo].[Companies] ([CompanyName], [Domain], [Industry], [Website])
+VALUES (N'Gamma Inc', N'gamma.net', N'Healthcare', N'https://gamma.net');
+GO
+INSERT INTO [dbo].[Companies] ([CompanyName], [Domain], [Industry], [Website])
+VALUES (N'Delta LLC', N'delta.io', N'Retail', N'https://delta.io');
+GO
+INSERT INTO [dbo].[Companies] ([CompanyName], [Domain], [Industry], [Website])
+VALUES (N'Epsilon GmbH', N'epsilon.de', N'Manufacturing', N'https://epsilon.de');
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES (N'Alice Smith', N'alice@alpha.com', N'416-555-0100', N'Software Engineer', 1, 0)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES (N'Bob Jones', N'bob@alpha.com', N'416-555-0101', N'QA Analyst', 1, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES (N'Carol White', N'carol@beta.org', N'416-555-0102', N'Accountant', 2, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES (N'David Brown', N'david@beta.org', N'416-555-0103', N'Financial Analyst', 2, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES (N'Eve Davis', N'eve@gamma.net', N'416-555-0104', N'Nurse', 3, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES (N'Frank Moore', N'frank@gamma.net', N'416-555-0105', N'Doctor', 3, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES (N'Grace Wilson', N'grace@delta.io', N'416-555-0106', N'Sales Manager', 4, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Henry Taylor', N'henry@delta.io', N'416-555-0107', N'Store Manager', 4, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Ivy Anderson', N'ivy@epsilon.de', N'416-555-0108', N'Production Supervisor', 5, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Jack Thomas', N'jack@epsilon.de', N'416-555-0109', N'Engineer', 5, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Kara Martin', N'kara@alpha.com', N'416-555-0110', N'HR Specialist', 1, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Leo Harris', N'leo@beta.org', N'416-555-0111', N'Tax Consultant', 2, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Mona Clark', N'mona@gamma.net', N'416-555-0112', N'Lab Technician', 3, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Nate Lewis', N'nate@delta.io', N'416-555-0113', N'Customer Service', 4, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Olivia Walker', N'olivia@epsilon.de', N'416-555-0114', N'Quality Inspector', 5, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'string', N'user@example.com', N'416-555-0115', N'string', 1, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Muhatshim', N'muhtashim@gmail.com', N'416-555-0116', N'Software developer', 1, 0)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'john Wick', N'johnwick@gmail.com', N'416-555-0117', N'abcd', 1, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Superman Cartoon', N'superman@gmail.com', N'416-555-0118', N'Dentist', 1, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Hafsa Azhar', N'imhafsa@gmail.com', N'416-555-0119', N'Dental', 1, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'batman', N'batman@gmail.com', N'416-555-0120', N'dental', 1, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Jeff Maynard', N'JeffMaynard@outlook.com', N'416-555-0121', N'dental', 1, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Test Employee', N'shoaib.malick@ca.ey.com', N'416-666-8890', N'Dental', 1, 1)
+GO
+INSERT [dbo].[Employees] ([Name], [Email], [Phone], [JobTitle], [CompanyID], [IsActive]) VALUES ( N'Hafsa Azhar', N'imazhar@gmail.com', N'416-557-0201', N'Dental', 2, 1)
+GO
