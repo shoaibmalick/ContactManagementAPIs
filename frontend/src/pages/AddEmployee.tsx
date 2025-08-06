@@ -21,7 +21,7 @@ const AddEmployee: React.FC = () => {
   };
 
   return (
-    <LayoutWrapper title="Add Employee">
+    <LayoutWrapper title="">
       <EmployeeForm mode="add" onSubmit={handleAdd} />
     </LayoutWrapper>
   );

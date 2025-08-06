@@ -13,8 +13,11 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "../api/axios";
-import { EmployeePayload, Employee,company } from "../types";
-import CompanyDropdown  from "./CompanyDropdown";
+import { EmployeePayload, Employee, company } from "../types";
+import CompanyDropdown from "./CompanyDropdown";
+import { validateEmail } from "../utils/emailValidation";
+import { useNotification } from "../context/NotificationContext";
+//import InputMask from "react-input-mask-next";
 
 interface EmployeeFormProps {
   mode: "add" | "edit";
@@ -33,8 +36,10 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
   initialValues,
   onSubmit,
   isSubmitting = false,
+
 }) => {
   const [companies, setCompanies] = useState<Company[]>([]);
+  const { showNotification } = useNotification();
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -45,7 +50,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
         console.error("Error fetching companies:", error);
       }
     };
-  
+
     fetchCompanies();
   }, []);
 
@@ -68,7 +73,37 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
       //jobTitle: Yup.string().required("Job Title is required"),
       companyID: Yup.string().required("Company is required"),
     }),
-    onSubmit: (values) => onSubmit(values),
+    //onSubmit: (values) => onSubmit(values),
+    onSubmit: async (values) => {
+      try {
+        const validationResult = await validateEmail(values.email);
+
+        if (validationResult) {
+          const emailStatus = validationResult.deliverability;
+
+          console.log("Email deliverability status:", emailStatus);
+
+          if (!validationResult || validationResult.deliverability === "UNDELIVERABLE") {
+            showNotification("Invalid email", "error");
+            return; // Prevents form submission
+          }
+
+          const payloadWithStatus = {
+            ...values,
+            emailStatus,
+          };
+
+          onSubmit(payloadWithStatus);
+        } else {
+          //alert("Failed to validate email. Please try again later.");
+          showNotification("Failed to validate email. Please try again later.", "error");
+        }
+      } catch (error) {
+        console.error("Email validation error:", error);
+        //alert("Unexpected error during email validation.");
+        showNotification("Unexpected error during email validation.", "error");
+      }
+    },
   });
 
   return (
@@ -107,12 +142,25 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
         fullWidth
         label="Phone"
         name="phone"
+        placeholder="___-___-____"
         value={formik.values.phone}
-        onChange={formik.handleChange}
+        onChange={(e) => {
+          const formatted = e.target.value
+            .replace(/\D/g, "")                            // Remove non-numeric
+            .slice(0, 10)                                  // Limit to 10 digits
+            .replace(/(\d{3})(\d{3})(\d{0,4})/, (_, a, b, c) =>
+              [a, b, c].filter(Boolean).join("-")          // Format as XXX-XXX-XXXX
+            );
+
+          formik.setFieldValue("phone", formatted);
+        }}
         onBlur={formik.handleBlur}
         error={formik.touched.phone && Boolean(formik.errors.phone)}
-        //helperText={formik.touched.phone && formik.errors.phone}
-        helperText={formik.touched.phone && formik.errors.phone ? formik.errors.phone as string : ""}
+        helperText={
+          formik.touched.phone && formik.errors.phone
+            ? formik.errors.phone as string
+            : ""
+        }
         margin="normal"
       />
 
@@ -128,27 +176,27 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
         helperText={formik.touched.jobTitle && formik.errors.jobTitle ? formik.errors.jobTitle as string : ""}
         margin="normal"
       />
-<TextField
-  fullWidth
-  select
-  label="Active Status"
-  name="isActive"
-  value={formik.values.isActive.toString()} // convert boolean to string
-  onChange={(e) => formik.setFieldValue("isActive", e.target.value === "true")}
-  margin="normal"
->
-  <MenuItem value="true">Active</MenuItem>
-  <MenuItem value="false">Inactive</MenuItem>
-</TextField>
+      <TextField
+        fullWidth
+        select
+        label="Status"
+        name="isActive"
+        value={formik.values.isActive.toString()} // convert boolean to string
+        onChange={(e) => formik.setFieldValue("isActive", e.target.value === "true")}
+        margin="normal"
+      >
+        <MenuItem value="true">Active</MenuItem>
+        <MenuItem value="false">Inactive</MenuItem>
+      </TextField>
 
-<CompanyDropdown
-  value={formik.values.companyID}
-  onChange={formik.handleChange}
-  onBlur={formik.handleBlur}
-  error={formik.touched.companyID && Boolean(formik.errors.companyID)}
+      <CompanyDropdown
+        value={formik.values.companyID}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formik.touched.companyID && Boolean(formik.errors.companyID)}
         //helperText={formik.touched.companyID && formik.errors.companyID}
         helperText={formik.touched.companyID && formik.errors.companyID ? formik.errors.companyID as string : ""}
-/>
+      />
 
       <Box display="flex" justifyContent="flex-end" mt={2}>
         <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>

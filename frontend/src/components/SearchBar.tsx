@@ -18,8 +18,14 @@ const SearchBar: React.FC<SearchBarProps> = ({
       variant="outlined"
       value={searchTerm}
       onChange={(e) => onSearchChange(e.target.value)}
-      fullWidth
-      sx={{ mb: 2 }}
+      sx={{
+        width: 800, // Wider for typing
+        height: "56px", // Match MUI default height
+        mb: 0, // Remove bottom margin
+        "& .MuiInputBase-root": {
+          height: "56px", // Ensures consistent input height
+        },
+      }}
     />
   );
 };
