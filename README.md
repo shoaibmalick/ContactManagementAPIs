@@ -71,6 +71,24 @@ Abstract API Response = {"email": "shoaib.malick009876@outlookk.com",
 "text": "TRUE"},
 "text": "TRUE"},
 
+Adding some screenshot for reference
+
+Swagger
+<img width="1856" height="891" alt="image" src="https://github.com/user-attachments/assets/a870eaa2-8717-4c11-a98f-75073f8676ca" />
+
+Employee List
+<img width="1908" height="971" alt="image" src="https://github.com/user-attachments/assets/28635fed-9228-446a-ae5c-53b2e8edb861" />
+
+Filters
+<img width="1898" height="971" alt="image" src="https://github.com/user-attachments/assets/eb40920e-8031-4caf-bac4-7040b1cccb49" />
+
+Edit Employee
+<img width="1446" height="855" alt="image" src="https://github.com/user-attachments/assets/abd49f41-83a8-4df3-a64b-bc4ec99eb72f" />
+
+
+
+
+
 
 
 
